@@ -1,0 +1,54 @@
+unit uPlayerOff;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls;
+
+type
+  TForm2 = class(TForm)
+    Button1: TButton;
+    Button2: TButton;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+  playeron : boolean;
+
+implementation
+
+uses uSound, uHi;
+
+{$R *.dfm}
+
+procedure TForm2.Button1Click(Sender: TObject);
+begin
+  form1.MediaPlayer1.Destroy;
+  form2.Close;
+  playeron := false;
+  form2.Button1.Visible := false;
+  form2.Button1.Enabled := false;
+  form2.Button2.Enabled := true;
+  form2.Button2.Visible := true;
+end;
+
+procedure TForm2.Button2Click(Sender: TObject);
+begin
+  //if not assigned(form1.MediaPlayer1) then
+    //form1.MediaPlayer1 := MediaPlayer1.create(self);
+  //form1.MediaPlayer1.Create(self);
+  form1.mediaplayer1.FileName := (way + 'Треки\' + tracklist^.name);
+  tracklist := tracklist^.next;
+  form1.mediaplayer1.Open;
+  form1.mediaplayer1.Play;
+  player := true;
+end;
+
+end.

@@ -1,0 +1,31 @@
+unit uInstruction;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ComCtrls, uHi;
+
+type
+  TfmInstruction = class(TForm)
+    rchInstruction: TRichEdit;
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fmInstruction: TfmInstruction;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfmInstruction.FormShow(Sender: TObject);
+begin
+  fmInstruction.rchInstruction.Lines.LoadFromFile( way + 'Инструкция пользователя.txt');
+end;
+
+end.
